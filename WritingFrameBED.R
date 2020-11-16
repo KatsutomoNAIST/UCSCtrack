@@ -5,9 +5,9 @@ Refseq_GTF <- read.table("hg38.ncbiRefSeq.gtf", sep = "\t", header = FALSE)
 
 ## Select forward strand, frame0 exons, remove first exons
 Frame <- subset(subset(Refseq_GTF, V8=="0"), V7=="+")
-x<- NULL
-y<- NULL
-i =1
+#x<- NULL
+#y<- NULL
+#i =1
 
 #while (i < length(Frame[,3])) {
   #if (Frame[i,3]=="start_codon") {
@@ -23,6 +23,7 @@ i =1
 CDS <- subset(Frame, V3=="CDS")
 
 BEDw0 <- CDS[,c(1,4,5)] 
+BEDw0[,2] <- BEDw0[,2]-1
 BEDw0[,4] <- "Frame0"
 BEDw0[,5] <- 0
 BEDw0[,6] <- "+"
@@ -30,6 +31,8 @@ BEDw0[,7] <- BEDw0[,2]
 BEDw0[,8] <- BEDw0[,3]
 BEDw0[,9] <- "255,0,0"
 BEDw0[,10] <- paste(BEDw0[,1], "_", BEDw0[,2], "_", BEDw0[,3])
+
+
 ## Select reverse strand, frame0 exons, remove first exons
 Frame <- subset(subset(Refseq_GTF, V8=="0"), V7=="-")
 #x<- NULL
@@ -50,6 +53,7 @@ Frame <- subset(subset(Refseq_GTF, V8=="0"), V7=="-")
 CDS <- subset(Frame, V3=="CDS")
 
 BEDc0 <- CDS[,c(1,4,5)] 
+BEDc0[,2] <- BEDc0[,2]-1
 BEDc0[,4] <- "Frame0"
 BEDc0[,5] <- 0
 BEDc0[,6] <- "-"
@@ -65,6 +69,7 @@ CDS <- subset(Frame, V3=="CDS")
 
 
 BEDw1 <- CDS[,c(1,4,5)] 
+BEDw1[,2] <- BEDw1[,2]-1
 BEDw1[,4] <- "Frame1"
 BEDw1[,5] <- 0
 BEDw1[,6] <- "+"
@@ -78,6 +83,7 @@ Frame <- subset(subset(Refseq_GTF, V8=="1"), V7=="-")
 CDS <- subset(Frame, V3=="CDS")
 
 BEDc1 <- CDS[,c(1,4,5)] 
+BEDc1[,2] <- BEDc1[,2]-1
 BEDc1[,4] <- "Frame1"
 BEDc1[,5] <- 0
 BEDc1[,6] <- "-"
@@ -94,6 +100,7 @@ CDS <- subset(Frame, V3=="CDS")
 
 
 BEDw2 <- CDS[,c(1,4,5)] 
+BEDw2[,2] <- BEDw2[,2]-1
 BEDw2[,4] <- "Frame2"
 BEDw2[,5] <- 0
 BEDw2[,6] <- "+"
@@ -107,6 +114,7 @@ Frame <- subset(subset(Refseq_GTF, V8=="2"), V7=="-")
 CDS <- subset(Frame, V3=="CDS")
 
 BEDc2 <- CDS[,c(1,4,5)] 
+BEDc2[,2] <- BEDc2[,2]-1
 BEDc2[,4] <- "Frame2"
 BEDc2[,5] <- 0
 BEDc2[,6] <- "-"
