@@ -137,7 +137,8 @@ BED2 <- BED[,1:9]
 write.table(BED2, sep="\t", file="readingframe.bed", row.names=F, col.names=F)
 
 ## after this, remove double quotes, and add the following line at the beginning
-## track name="ExonReadingFrame" description="ReadingFrameColorCoding" visibility=2 itemRgb="On"
+## track type=bigBed name="ReadingFrame" description="Reading frame of exon" itemRgb="On" bigDataUrl=https://github.com/KatsutomoNAIST/UCSCtrack/raw/master/readingframe.bb
+
 
 
 
